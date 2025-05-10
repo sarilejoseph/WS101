@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth; // Add this line
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +23,7 @@ Auth::routes();
 // Protected routes (require authentication)
 Route::middleware(['auth'])->group(function () {
     // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     
     // Item management
     Route::resource('items', ItemController::class);
@@ -33,10 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inventory/print', [InventoryController::class, 'print'])->name('inventory.print');
 });
 
-// Redirect home to dashboard for authenticated users
-Route::get('/home', function() {
-    return redirect('/dashboard');
-});
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Redirect /home to dashboard
+Route::get('/home', function () {
+    return redirect()->route('dashboard.index');
+})->name('home');

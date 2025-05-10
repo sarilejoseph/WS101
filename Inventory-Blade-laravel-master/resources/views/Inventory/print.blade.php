@@ -114,7 +114,7 @@
         <button onclick="window.print();" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
             Print Report
         </button>
-        <button onclick="window.location.href='{{ route('dashboard') }}';" style="padding: 10px 20px; background-color: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 10px;">
+        <button onclick="window.location.href='{{ route('dashboard.index') }}';" style="padding: 10px 20px; background-color: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 10px;">
             Back to Dashboard
         </button>
     </div>
